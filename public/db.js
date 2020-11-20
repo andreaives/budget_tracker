@@ -27,14 +27,14 @@ request.onerror = function(event) {
 };
 // This function is called when it's time to save data to the indexedDb
 function saveRecord(record) {
-  const transaction = db.transaction(["<object store name here>"], "readwrite");
-  const store = transaction.objectStore("<object store name here>");
+  const transaction = db.transaction(["budget"], "readwrite");
+  const store = transaction.objectStore("budget");
   store.add(record);
 }
 // This function runs when we detect that the internet connection is working again. It sends a post request to the server with all the saved data so that the data can be synced with the server, and then it wipes out the existing indexedDb. You can keep as-is, unless you want to change the name of the fetch route.
 function checkDatabase() {
-  const transaction = db.transaction(["<object store name here>"], "readwrite");
-  const store = transaction.objectStore("<object store name here>");
+  const transaction = db.transaction(["budget"], "readwrite");
+  const store = transaction.objectStore("budget");
   const getAll = store.getAll();
   getAll.onsuccess = function() {
     if (getAll.result.length > 0) {
