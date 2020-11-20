@@ -21,7 +21,10 @@ const opts = {
   useCreateIndex: true,
   useFindAndModify: false
 };
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", opts);
+
+app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
